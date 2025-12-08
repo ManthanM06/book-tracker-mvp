@@ -19,7 +19,7 @@ const bookSchema = mongoose.Schema(
       required: true,
     },
     genre: {
-      type: [String], // Changed to an Array (e.g., ["Fiction", "Mystery"])
+      type: [String],
       default: [],
     },
     coverImage: {

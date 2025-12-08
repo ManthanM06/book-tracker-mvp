@@ -11,6 +11,19 @@ const app = express();
 app.use(express.json());
 app.use(cors()); //allows frontend to make requests
 
+//db connection
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`Error : ${error.message}`);
+    process.exit(1);
+  }
+};
+
+connectDB();
+
 app.get("/", (req, res) => {
   res.send("API is running....");
 });

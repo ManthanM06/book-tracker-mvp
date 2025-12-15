@@ -2,6 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import userRoutes from "./routes/userRoutes.js";
+import bookRoutes from "./routes/bookRoutes.js";
+import sessionRoutes from "./routes/sessionRoutes.js";
 
 dotenv.config();
 
@@ -10,6 +13,11 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(cors()); //allows frontend to make requests
+
+//routes
+app.use("/api/users", userRoutes);
+app.use("/api/books", bookRoutes);
+app.use("/api/sessions", sessionRoutes);
 
 //db connection
 const connectDB = async () => {
